@@ -14,51 +14,90 @@
     body {
       background: linear-gradient(145deg, #f5f7fc 0%, #eef2f5 100%);
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      padding: 2rem 1.5rem;
       color: #1a2a3f;
+      min-height: 100vh;
     }
 
-    /* main container */
+    .page {
+      display: none;
+      padding: 2rem 1.5rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .showcase {
       max-width: 1300px;
       margin: 0 auto;
     }
 
-    /* header / brand story */
-    .hero {
-      text-align: center;
-      margin-bottom: 3rem;
+    .nav-bar {
+      max-width: 1300px;
+      margin: 0 auto 1rem auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: rgba(255,255,245,0.7);
+      backdrop-filter: blur(12px);
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      border: 1px solid rgba(255,255,245,0.7);
     }
 
-    .hero h1 {
-      font-size: 2.7rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #1e3c2c, #2a5e3f);
+    .logo {
+      font-weight: 800;
+      font-size: 1.4rem;
+      background: linear-gradient(135deg, #1e3c2c, #3b6b4c);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      letter-spacing: -0.02em;
     }
 
-    .hero p {
-      font-size: 1.1rem;
-      color: #4a5b6e;
-      max-width: 600px;
-      margin: 0.5rem auto 0;
-      font-weight: 450;
+    .nav-links {
+      display: flex;
+      gap: 1rem;
     }
 
-    /* product grid */
+    .nav-btn {
+      background: transparent;
+      border: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #2c4a3a;
+    }
+
+    .nav-btn.active {
+      background: #1f3b2c;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .nav-btn:hover:not(.active) {
+      background: #e2e8f0;
+    }
+
     .product-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
       justify-content: center;
       align-items: stretch;
-      margin-bottom: 3rem;
+      margin: 2rem 0;
     }
 
-    /* card styles - neumorphic / clean glass */
     .product-card {
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(2px);
@@ -78,12 +117,36 @@
       box-shadow: 0 28px 40px -16px rgba(0, 0, 0, 0.2);
     }
 
-    /* badge row */
+    .product-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(125deg, #eef2f5, #e2e8f0);
+      border-radius: 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #dce3ec;
+    }
+
+    .mock-label {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #4b6b5c;
+    }
+
+    .mock-label .product-icon {
+      font-size: 2.5rem;
+      display: block;
+      font-weight: normal;
+    }
+
     .badge-group {
       display: flex;
       gap: 0.6rem;
       flex-wrap: wrap;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1rem;
     }
 
     .badge {
@@ -93,7 +156,6 @@
       border-radius: 40px;
       background: #f0f2f5;
       color: #2c3e44;
-      letter-spacing: 0.3px;
       text-transform: uppercase;
     }
 
@@ -106,7 +168,6 @@
       font-size: 2.3rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      margin-bottom: 0.2rem;
     }
 
     .zanari-title {
@@ -138,7 +199,6 @@
       padding: 0.7rem 1rem;
       margin: 1rem 0;
       display: inline-block;
-      width: auto;
     }
 
     .feature-tag {
@@ -147,7 +207,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.8rem;
-      align-items: baseline;
     }
 
     .feature-tag span {
@@ -157,13 +216,11 @@
       font-size: 0.8rem;
       font-weight: 600;
       color: #2c5a3a;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
     }
 
     .quantity {
       font-size: 1rem;
       font-weight: 600;
-      color: #1f3b2c;
       background: #eef3e8;
       display: inline-block;
       padding: 0.2rem 1rem;
@@ -182,16 +239,17 @@
       margin-top: 1rem;
     }
 
-    .origin-info strong {
-      font-weight: 700;
-      color: #2c3e44;
+    .price-tag {
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: #1f3b2c;
+      margin: 0.5rem 0;
     }
 
     .button-group {
       display: flex;
       gap: 0.8rem;
-      margin-top: 1.5rem;
-      align-items: center;
+      margin-top: 1.2rem;
       flex-wrap: wrap;
     }
 
@@ -205,10 +263,6 @@
       font-size: 0.9rem;
       cursor: pointer;
       transition: 0.2s;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
     }
 
     .btn-primary:hover {
@@ -216,116 +270,161 @@
       transform: scale(0.97);
     }
 
-    .btn-secondary {
-      background: #fff1e6;
-      border: 1px solid #e2aa8a;
-      color: #b5512c;
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #1f3b2c;
+      color: #1f3b2c;
       padding: 0.7rem 1.5rem;
       border-radius: 3rem;
       font-weight: 600;
-      font-size: 0.9rem;
       cursor: pointer;
       transition: 0.2s;
     }
 
-    .btn-secondary:hover {
-      background: #ffe3d4;
+    .btn-outline:hover {
+      background: #eef3e8;
     }
 
-    /* certification badge special */
-    .cert-badge {
+    .checkout-container {
+      max-width: 1100px;
+      margin: 1.5rem auto;
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border-bottom: 1px solid #eef2f5;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .cart-item-info {
+      flex: 2;
+    }
+
+    .cart-item-name {
+      font-weight: 700;
+    }
+
+    .cart-price {
+      font-weight: 700;
+      color: #2a5640;
+    }
+
+    .qty-control {
       display: flex;
       align-items: center;
-      gap: 6px;
-      background: #faf9fe;
-      border-radius: 40px;
-      padding: 2px 12px;
-      width: fit-content;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #1f5e3a;
+      gap: 0.6rem;
     }
 
-    /* interaction Panel */
-    .interaction-panel {
-      background: rgba(255,255,240,0.7);
-      backdrop-filter: blur(8px);
-      border-radius: 2rem;
-      padding: 1.5rem 2rem;
-      max-width: 850px;
-      margin: 2rem auto 0;
-      text-align: center;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
-      border: 1px solid rgba(255,255,245,0.8);
-    }
-
-    .panel-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: #1e2f3e;
-    }
-
-    .status-box {
-      background: #1e2a36;
-      color: #eef3ff;
-      padding: 0.9rem;
-      border-radius: 2rem;
-      font-family: monospace;
-      font-size: 1rem;
-      margin: 1rem 0;
-      word-break: break-word;
-    }
-
-    .history-log {
-      background: #ffffffd9;
-      border-radius: 1.2rem;
-      padding: 1rem;
-      text-align: left;
-      max-height: 160px;
-      overflow-y: auto;
-      font-size: 0.8rem;
-      color: #1e2a36;
-      border: 1px solid #e2eaf1;
-    }
-
-    .history-log p {
-      border-bottom: 1px solid #eef2f8;
-      padding: 0.3rem 0;
-      margin: 0;
-      font-weight: 450;
-    }
-
-    .flex-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.8rem;
-      margin: 1rem 0;
-    }
-
-    button.small-btn {
-      background: white;
-      border: 1px solid #cbd5e1;
-      padding: 0.5rem 1rem;
-      border-radius: 2rem;
-      font-weight: 500;
+    .qty-btn {
+      background: #f0f2f5;
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 30px;
+      font-weight: bold;
       cursor: pointer;
-      transition: 0.15s;
+      transition: 0.1s;
     }
 
-    button.small-btn:active {
-      transform: scale(0.96);
+    .qty-btn:hover {
+      background: #e2e6ec;
     }
 
-    .live-counter {
-      font-weight: 800;
+    .remove-item {
+      background: none;
+      border: none;
+      color: #b5512c;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+
+    .cart-summary {
+      background: #fafcf8;
+      padding: 1.5rem;
+      border-radius: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
       font-size: 1.4rem;
-      background: #ffffffb3;
-      display: inline-block;
-      padding: 0.2rem 1rem;
+      font-weight: 800;
+      margin: 1rem 0;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 1rem;
+      border: 1px solid #cfdfd4;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .payment-method {
+      margin: 1rem 0;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .payment-method label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .toast-msg {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1e2a36;
+      color: white;
+      padding: 0.7rem 1.3rem;
       border-radius: 60px;
-      margin-left: 0.5rem;
+      font-size: 0.8rem;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+      font-family: monospace;
+    }
+
+    .toast-msg.show {
+      opacity: 1;
+    }
+
+    .interaction-panel {
+      background: rgba(255,255,240,0.6);
+      border-radius: 2rem;
+      padding: 1rem;
+      max-width: 900px;
+      margin: 1rem auto 0;
+      text-align: center;
+    }
+
+    .live-status-text {
+      font-size: 0.85rem;
+      background: #eef2f0;
+      border-radius: 40px;
+      padding: 0.5rem 1rem;
+      color: #2c4a3a;
     }
 
     footer {
@@ -335,301 +434,355 @@
       color: #7a889c;
     }
 
-    @media (max-width: 780px) {
-      body {
-        padding: 1rem;
-      }
-      .product-card {
-        padding: 1.4rem;
-      }
-      .product-title {
-        font-size: 1.8rem;
-      }
-      .hero h1 {
-        font-size: 2rem;
-      }
+    @media (max-width: 700px) {
+      .nav-bar { padding: 0.6rem 1rem; }
+      .product-title { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
 
-<div class="showcase">
-  <div class="hero">
-    <h1>⚡ bio-performance series</h1>
-    <p>premium formulations · transparency · energy, metabolism & vitality</p>
-  </div>
+<div id="toastMsg" class="toast-msg">Message</div>
 
-  <div class="product-grid">
-    <!-- Zanari Card -->
-    <div class="product-card" id="zanariCard">
-      <div class="badge-group">
-        <span class="badge badge-accent">⭐ ENHANCEMENT</span>
-        <span class="badge">MALE SUPPORT</span>
-        <span class="badge">by Kristof Badayos</span>
+<!-- Product Listing Page -->
+<div id="productsPage" class="page active">
+  <div class="showcase">
+    <div class="nav-bar">
+      <div class="logo">BIOVITALIS</div>
+      <div class="nav-links">
+        <button class="nav-btn active" data-page="products">Products</button>
+        <button class="nav-btn" data-page="checkout">Checkout / Cart</button>
       </div>
-      <div class="product-title zanari-title">ZANARI</div>
-      <div class="sub-brand">Energy · Endurance · Libido</div>
-      <div class="key-feature">
-        <div class="feature-tag">
-          🔋 <span>ENERGY</span> 💪 <span>ENDURANCE</span> ❤️ <span>LIBIDO</span>
+    </div>
+    <div class="hero" style="text-align:center; margin: 1rem 0 0.5rem;">
+      <h1 style="font-size:2rem; font-weight:700;">Premium Performance</h1>
+      <p style="color:#4a5b6e;">Formulated by Kristof Badayos · Science-backed supplements</p>
+    </div>
+    <div class="product-grid">
+      <!-- Zanari Card -->
+      <div class="product-card">
+        <div class="product-image">
+          <div class="mock-label">
+            <span class="product-icon">ZANARI</span>
+            <div>30 Gummies</div>
+            <div style="font-size:10px;">Energy Support</div>
+          </div>
         </div>
-      </div>
-      <div class="quantity">🍬 30 GUMMIES — active formula</div>
-      <div class="origin-info">
-        <span>🌏 MADE IN CHINA</span>
-        <span>🏭 MANUFACTURED IN INDIA</span>
-        <span>📦 batch: ZN2409</span>
-      </div>
-      <div class="button-group">
-        <button class="btn-primary" data-product="Zanari">✨ TRY ZANARI ✨</button>
-        <button class="btn-secondary" data-info="zanari">📋 Details</button>
-      </div>
-      <div class="origin-info" style="border-top: none; margin-top: 0.2rem;">
-        <span class="cert-badge">✔ Premium Quality Gummies</span>
-      </div>
-    </div>
-
-    <!-- BurnSlim Card -->
-    <div class="product-card" id="burnslimCard">
-      <div class="badge-group">
-        <span class="badge badge-accent">🔥 DIETARY SUPPLEMENT</span>
-        <span class="badge">FAT METABOLISM</span>
-        <span class="badge">by Kristof</span>
-      </div>
-      <div class="product-title burnslim-title">BurnSlim</div>
-      <div class="sub-brand">ni Kristof · thermogenic complex</div>
-      <div class="key-feature">
-        <div class="feature-tag">
-          🧬 <span>METABOOST</span> 🔥 <span>THERMO</span> 🧃 <span>DETOX SUPPORT</span>
+        <div class="badge-group">
+          <span class="badge badge-accent">Enhancement</span>
+          <span class="badge">Male Support</span>
         </div>
+        <div class="product-title zanari-title">ZANARI</div>
+        <div class="sub-brand">Energy · Endurance · Libido | by Kristof Badayos</div>
+        <div class="feature-tag"><span>ENERGY</span> <span>ENDURANCE</span> <span>LIBIDO</span></div>
+        <div class="quantity">30 GUMMIES · Made in China / Manufactured in India</div>
+        <div class="price-tag">$49.99</div>
+        <div class="button-group">
+          <button class="btn-primary add-to-cart" data-product="Zanari" data-price="49.99" data-type="gummies">Add to Cart</button>
+          <button class="btn-outline quick-info" data-info="zanari">Details</button>
+        </div>
+        <div class="origin-info"><span>Premium Male Enhancement</span><span>Global Quality</span></div>
       </div>
-      <div class="quantity">💊 60 CAPSULES — 30-day supply</div>
-      <div class="origin-info">
-        <span>✅ FDA CERTIFIED</span>
-        <span>📜 NERTIFIED® quality seal</span>
-        <span>🏭 GMP facility</span>
+      <!-- BurnSlim Card -->
+      <div class="product-card">
+        <div class="product-image">
+          <div class="mock-label">
+            <span class="product-icon">BURNSLIM</span>
+            <div>60 Capsules</div>
+            <div style="font-size:10px;">Thermogenic Complex</div>
+          </div>
+        </div>
+        <div class="badge-group">
+          <span class="badge badge-accent">Dietary Supplement</span>
+          <span class="badge">FDA Certified</span>
+        </div>
+        <div class="product-title burnslim-title">BurnSlim</div>
+        <div class="sub-brand">ni Kristof · Metabolism + Thermogenic</div>
+        <div class="feature-tag"><span>METABOOST</span> <span>THERMO</span> <span>DETOX</span></div>
+        <div class="quantity">60 CAPSULES · FDA Certified · NERTIFIED</div>
+        <div class="price-tag">$44.99</div>
+        <div class="button-group">
+          <button class="btn-primary add-to-cart" data-product="BurnSlim" data-price="44.99" data-type="capsules">Add to Cart</button>
+          <button class="btn-outline quick-info" data-info="burnslim">Info</button>
+        </div>
+        <div class="origin-info"><span>FDA Certified</span><span>NERTIFIED Seal</span></div>
       </div>
-      <div class="button-group">
-        <button class="btn-primary" data-product="BurnSlim">🔥 ACTIVATE BURNSLIM 🔥</button>
-        <button class="btn-secondary" data-info="burnslim">📖 Composition</button>
-      </div>
-      <div class="origin-info" style="border-top: none;">
-        <span class="cert-badge">🏅 FDA CERTIFIED + NERTIFIED standard</span>
-      </div>
+    </div>
+    <div class="interaction-panel">
+      <div class="live-status-text" id="liveStatus">Ready. Click 'Add to Cart' to start your order.</div>
     </div>
   </div>
-
-  <!-- Dynamic interaction panel with javascript engagement -->
-  <div class="interaction-panel" id="livePanel">
-    <div class="panel-title">📡 Supplement Hub — live activity tracker</div>
-    <div class="flex-buttons">
-      <button id="resetStatsBtn" class="small-btn">⟳ Reset stats</button>
-      <button id="showFullInfoBtn" class="small-btn">📢 Show product summary</button>
-    </div>
-    <div class="status-box" id="statusMessage">
-      ⚡ Click any product button to unlock formula insights & interaction.
-    </div>
-    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.8rem; margin-top: 0.5rem;">
-      <span>🏆 Total interactions: <strong id="interactionCountDisplay">0</strong></span>
-      <span>⭐ Most viewed: <strong id="mostClickedProduct">—</strong></span>
-    </div>
-    <div class="history-log" id="historyLog">
-      <p style="color:#8a99aa;">✨ Your activity feed will appear here ...</p>
-    </div>
-  </div>
-  <footer>© BioVitalis — authentic formulations | For educational & interactive showcase. Always consult specialist.</footer>
 </div>
 
+<!-- Checkout / Payment Page -->
+<div id="checkoutPage" class="page">
+  <div class="showcase">
+    <div class="nav-bar">
+      <div class="logo">SECURE CHECKOUT</div>
+      <div class="nav-links">
+        <button class="nav-btn" data-page="products">Products</button>
+        <button class="nav-btn active" data-page="checkout">Checkout / Cart</button>
+      </div>
+    </div>
+    <div class="checkout-container">
+      <h2 style="margin-bottom:1rem;">Order Summary</h2>
+      <div id="cartItemsList">
+        <div style="color:#8a9aa8; text-align:center; padding: 2rem;">Cart is empty. Add products from the shop.</div>
+      </div>
+      <div id="cartSummary" style="display:none;">
+        <div class="cart-summary">
+          <div class="total-row">
+            <span>Subtotal:</span>
+            <span id="cartSubtotal">$0.00</span>
+          </div>
+          <div class="total-row">
+            <span>Shipping:</span>
+            <span>$5.99</span>
+          </div>
+          <div class="total-row">
+            <span>Total (USD):</span>
+            <span id="cartTotal">$0.00</span>
+          </div>
+        </div>
+
+        <h3 style="margin: 1.5rem 0 1rem;">Billing & Payment Details</h3>
+        <div class="form-group">
+          <input type="text" id="fullName" placeholder="Full name" value="Kristof Badayos">
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" placeholder="Email address" value="contact@bioenergy.com">
+        </div>
+        <div class="form-group">
+          <input type="text" id="address" placeholder="Shipping address" value="123 Wellness Avenue">
+        </div>
+        <div class="payment-method">
+          <label><input type="radio" name="payment" value="creditcard" checked> Credit Card</label>
+          <label><input type="radio" name="payment" value="paypal"> PayPal</label>
+          <label><input type="radio" name="payment" value="crypto"> Cryptocurrency</label>
+        </div>
+        <button id="completeOrderBtn" class="btn-primary" style="width:100%; padding:1rem; font-size:1.1rem;">Complete Transaction & Pay</button>
+        <p style="font-size:0.7rem; margin-top:1rem; text-align:center;">Secure demo checkout - transaction simulation</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>BioVitalis — authentic formulations | Interactive showcase with payment flow</footer>
+
 <script>
-  // ---------- JAVASCRIPT CORE: track interactions, product details, dynamic feedback ----------
-  
-  // Data store
-  let interactionHistory = [];     // array of { product, action, timestamp, detail }
-  let productClickCount = {
-    Zanari: 0,
-    BurnSlim: 0
-  };
-  
-  // Helper to get formatted time
-  function getFormattedTime() {
-    const now = new Date();
-    return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second:'2-digit' });
+  // Cart and transaction logic
+  let cart = [];
+
+  function saveCart() {
+    localStorage.setItem('supplementCart', JSON.stringify(cart));
   }
-  
-  // update UI displays: counter, most clicked, history log, status message optional
-  function updateUI() {
-    // update interaction total display
-    const totalClicks = productClickCount.Zanari + productClickCount.BurnSlim;
-    document.getElementById('interactionCountDisplay').innerText = totalClicks;
-    
-    // determine most clicked product
-    let mostClicked = '—';
-    if (productClickCount.Zanari > productClickCount.BurnSlim) mostClicked = 'Zanari 🔋';
-    else if (productClickCount.BurnSlim > productClickCount.Zanari) mostClicked = 'BurnSlim 🔥';
-    else if (totalClicks > 0 && productClickCount.Zanari === productClickCount.BurnSlim) mostClicked = 'Tie (both)';
-    else if (totalClicks === 0) mostClicked = '—';
-    document.getElementById('mostClickedProduct').innerText = mostClicked;
-    
-    // rebuild history log
-    const historyContainer = document.getElementById('historyLog');
-    if (interactionHistory.length === 0) {
-      historyContainer.innerHTML = '<p style="color:#8a99aa;">✨ Your activity feed will appear here ...</p>';
+
+  function loadCart() {
+    const stored = localStorage.getItem('supplementCart');
+    if(stored) {
+      try {
+        cart = JSON.parse(stored);
+      } catch(e) { cart = []; }
+    } else {
+      cart = [];
+    }
+    renderCartUI();
+  }
+
+  function addToCart(product, price, type) {
+    const existing = cart.find(item => item.productName === product);
+    if(existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({
+        id: Date.now() + Math.random(),
+        productName: product,
+        price: parseFloat(price),
+        quantity: 1,
+        type: type
+      });
+    }
+    saveCart();
+    renderCartUI();
+    showToast(product + " added to cart.");
+    const liveDiv = document.getElementById('liveStatus');
+    if(liveDiv && document.getElementById('productsPage').classList.contains('active')) {
+      liveDiv.innerHTML = product + " added. Go to Checkout to complete payment.";
+    }
+  }
+
+  function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    saveCart();
+    renderCartUI();
+    showToast("Item removed.");
+  }
+
+  function updateQuantity(productId, delta) {
+    const idx = cart.findIndex(item => item.id === productId);
+    if(idx !== -1) {
+      let newQty = cart[idx].quantity + delta;
+      if(newQty <= 0) {
+        cart.splice(idx,1);
+      } else {
+        cart[idx].quantity = newQty;
+      }
+      saveCart();
+      renderCartUI();
+    }
+  }
+
+  function renderCartUI() {
+    const container = document.getElementById('cartItemsList');
+    const summaryDiv = document.getElementById('cartSummary');
+    if(!container) return;
+
+    if(cart.length === 0) {
+      container.innerHTML = `<div style="color:#8a9aa8; text-align:center; padding: 2rem;">Cart is empty. Add Zanari or BurnSlim from Products.</div>`;
+      if(summaryDiv) summaryDiv.style.display = 'none';
       return;
     }
-    // show last 8 entries (newest first? but we want chronological? keep descending? better show latest at top)
-    const reversedHistory = [...interactionHistory].reverse();
-    const historyHtml = reversedHistory.slice(0, 12).map(entry => {
-      let icon = entry.product === 'Zanari' ? '💚' : '🧡';
-      return `<p>${icon} [${entry.timestamp}] ${entry.product} · ${entry.action} ${entry.detail ? '— ' + entry.detail : ''}</p>`;
-    }).join('');
-    historyContainer.innerHTML = historyHtml;
-    if (interactionHistory.length > 12) {
-      const extra = interactionHistory.length - 12;
-      historyContainer.innerHTML += `<p style="font-size:0.7rem; color:#99a7b5;">+ ${extra} older events</p>`;
+
+    let html = '';
+    let subtotal = 0;
+    cart.forEach(item => {
+      const itemTotal = item.price * item.quantity;
+      subtotal += itemTotal;
+      html += `
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <div class="cart-item-name">${item.productName} ${item.type === 'gummies' ? 'Gummies' : 'Capsules'}</div>
+            <div style="font-size:0.75rem; color:#6b7b8c;">Unit price: $${item.price.toFixed(2)}</div>
+          </div>
+          <div class="qty-control">
+            <button class="qty-btn" data-id="${item.id}" data-delta="-1">-</button>
+            <span style="min-width: 30px; text-align:center;">${item.quantity}</span>
+            <button class="qty-btn" data-id="${item.id}" data-delta="1">+</button>
+          </div>
+          <div class="cart-price">$${itemTotal.toFixed(2)}</div>
+          <button class="remove-item" data-id="${item.id}">Remove</button>
+        </div>
+      `;
+    });
+
+    container.innerHTML = html;
+    if(summaryDiv) summaryDiv.style.display = 'block';
+    document.getElementById('cartSubtotal').innerText = `$${subtotal.toFixed(2)}`;
+    const shipping = 5.99;
+    const total = subtotal + shipping;
+    document.getElementById('cartTotal').innerText = `$${total.toFixed(2)}`;
+
+    document.querySelectorAll('.qty-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = Number(btn.dataset.id);
+        const delta = parseInt(btn.dataset.delta);
+        updateQuantity(id, delta);
+      });
+    });
+    document.querySelectorAll('.remove-item').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = Number(btn.dataset.id);
+        removeFromCart(id);
+      });
+    });
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('toastMsg');
+    toast.innerText = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2200);
+  }
+
+  function processTransaction() {
+    if(cart.length === 0) {
+      showToast("Cannot complete: cart is empty.");
+      return false;
+    }
+    const fullName = document.getElementById('fullName')?.value.trim();
+    const email = document.getElementById('email')?.value.trim();
+    const address = document.getElementById('address')?.value.trim();
+    if(!fullName || !email || !address) {
+      showToast("Please fill in all billing fields.");
+      return false;
+    }
+    const paymentMethod = document.querySelector('input[name="payment"]:checked')?.value;
+    if(!paymentMethod) {
+      showToast("Select a payment method.");
+      return false;
+    }
+    let subtotal = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+    let total = subtotal + 5.99;
+    showToast(`Transaction successful (${paymentMethod}). Total: $${total.toFixed(2)}. Thank you, ${fullName}!`);
+    cart = [];
+    saveCart();
+    renderCartUI();
+    const liveDiv = document.getElementById('liveStatus');
+    if(liveDiv && document.getElementById('productsPage')?.classList.contains('active')) {
+      liveDiv.innerHTML = "Order completed. Cart cleared. Start new selection.";
+    }
+    return true;
+  }
+
+  function showProductInfo(infoType) {
+    if(infoType === 'zanari') {
+      showToast("Zanari: Energy, Endurance & Libido gummies. 30 gummies. Made in China / India. Male enhancement complex.");
+    } else if(infoType === 'burnslim') {
+      showToast("BurnSlim: 60 capsules, FDA Certified, NERTIFIED. Thermogenic + metabolism support. By Kristof.");
     }
   }
-  
-  // generic add interaction
-  function addInteraction(product, action, detail = '') {
-    const timestamp = getFormattedTime();
-    interactionHistory.unshift({ product, action, timestamp, detail }); // newest on top index
-    // we keep max 25 history to avoid heavy dom
-    if (interactionHistory.length > 30) interactionHistory.pop();
-    
-    if (action === 'click' || action === 'Try me' || action === 'Detail view') {
-      if (product === 'Zanari') productClickCount.Zanari++;
-      else if (product === 'BurnSlim') productClickCount.BurnSlim++;
-    }
-    updateUI();
-    // also set status message transient
-    const statusDiv = document.getElementById('statusMessage');
-    if (action === 'Detail view') {
-      statusDiv.innerHTML = `📄 ${product} detailed info: ${detail}`;
-    } else if (action === 'Try me') {
-      statusDiv.innerHTML = `✨ You selected ${product}! ✨ ${detail}`;
-    } else {
-      statusDiv.innerHTML = `🔄 ${product} — ${action} ${detail ? '('+detail+')' : ''}`;
-    }
-    // auto reset status after 3 sec? no, keep but not intrusive, we can allow reset, fine.
-    setTimeout(() => {
-      if (document.getElementById('statusMessage').innerHTML.includes(detail?.slice(0,20))) {
-        // optional, but don't erase fully if not needed
-        if(interactionHistory.length >0) {} // keep fresh
-      }
-    }, 4000);
-  }
-  
-  // specific product info display (modal style in status + history)
-  function showProductInfo(productID) {
-    if (productID === 'zanari') {
-      const detailText = 'Zanari: Energy, Endurance & Libido gummies. Contains Tribulus, Maca, L-Citrulline. Made in China / Manufactured in India. 30 gummies. Non-GMO recipe.';
-      addInteraction('Zanari', 'Detail view', detailText.substring(0, 80)+'…');
-      // also custom detailed alert style but we can fill message directly.
-      const statusDiv = document.getElementById('statusMessage');
-      statusDiv.innerHTML = `📖 ZANARI formula: Energy + Endurance + Libido complex. Key ingredients: Maca root extract, Panax Ginseng, Zinc. 30 GUMMIES. ${detailText}`;
-    } else if (productID === 'burnslim') {
-      const detailText = 'BurnSlim: Dietary supplement, 60 capsules. Thermogenic blend: Green tea extract, L-Carnitine, Capsicum. FDA Certified & NERTIFIED quality. Supports metabolism & energy.';
-      addInteraction('BurnSlim', 'Detail view', detailText.substring(0, 80)+'…');
-      document.getElementById('statusMessage').innerHTML = `🔥 BURNSLIM profile: Fat metabolism, energy surge. 60 Capsules, FDA Certified + NERTIFIED seal. ${detailText}`;
+
+  function switchPage(pageId) {
+    document.querySelectorAll('.page').forEach(page => {
+      page.classList.remove('active');
+    });
+    document.getElementById(`${pageId}Page`).classList.add('active');
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.classList.remove('active');
+      if(btn.dataset.page === pageId) btn.classList.add('active');
+    });
+    if(pageId === 'checkout') {
+      renderCartUI();
     }
   }
-  
-  // product try action (primary click)
-  function productTry(productName) {
-    let msg = '';
-    let extraDetail = '';
-    if (productName === 'Zanari') {
-      msg = '⚡ Zanari gummies — boost endurance & vitality! Suggested use: 1-2 gummies daily.';
-      extraDetail = '30-day energy support. Dynamic male enhancement complex.';
-      addInteraction('Zanari', 'Try me', extraDetail);
-    } else if (productName === 'BurnSlim') {
-      msg = '🔥 BurnSlim active! Supports calorie burn, 60 capsules with thermogenic technology.';
-      extraDetail = 'Take 2 capsules before meals. FDA certified formula.';
-      addInteraction('BurnSlim', 'Try me', extraDetail);
-    }
-    const statusDiv = document.getElementById('statusMessage');
-    statusDiv.innerHTML = `🎯 ${msg} ✨ ${extraDetail}`;
-    // slight animation / pulse effect on card (optional)
-    const card = productName === 'Zanari' ? document.getElementById('zanariCard') : document.getElementById('burnslimCard');
-    if(card) {
-      card.style.transform = 'scale(1.01)';
-      setTimeout(() => { card.style.transform = ''; }, 220);
-    }
-  }
-  
-  // reset all stats
-  function resetAllStats() {
-    productClickCount = { Zanari: 0, BurnSlim: 0 };
-    interactionHistory = [];
-    updateUI();
-    document.getElementById('statusMessage').innerHTML = '⟳ Dashboard reset. All counters and history cleared. Start exploring products!';
-    // also clear extra status effects
-    setTimeout(() => {
-      if(document.getElementById('statusMessage').innerHTML.includes('reset')) {
-        // keep optional
-      }
-    }, 3000);
-    addInteraction('System', 'Reset', 'Interaction stats & history cleared');
-    // but we added reset as an extra but note, reset shouldn't count product clicks but we can filter product counts, fine.
-    // ensure product counts not increased after reset, already set to zero, then re-updateUI.
-    // manually call UI update again, but addInteraction will also update, but we avoid duplicate. However we added reset as interaction, but it adds to history only, not product.
-    // All good.
-  }
-  
-  // show full product summary (both)
-  function showFullSummary() {
-    const summary = `📊 PRODUCT OVERVIEW:
-    ✅ ZANARI: 30 GUMMIES | Energy • Endurance • Libido | Made in China / Manufactured in India | Male enhancement.
-    ✅ BurnSlim: 60 CAPSULES | Dietary supplement | FDA CERTIFIED + NERTIFIED | Thermogenic support.
-    Both formulations by Kristof Badayos / Kristof. Quality focused.`;
-    document.getElementById('statusMessage').innerHTML = summary.replace(/\n/g,'<br>');
-    addInteraction('Both', 'Summary view', 'Full product dashboard');
-  }
-  
-  // attach event listeners after DOM ready
+
   document.addEventListener('DOMContentLoaded', () => {
-    // Zanari primary button & secondary
-    const zanariTryBtn = document.querySelector('#zanariCard .btn-primary');
-    const zanariInfoBtn = document.querySelector('#zanariCard .btn-secondary');
-    // BurnSlim buttons
-    const burnTryBtn = document.querySelector('#burnslimCard .btn-primary');
-    const burnInfoBtn = document.querySelector('#burnslimCard .btn-secondary');
-    
-    if (zanariTryBtn) {
-      zanariTryBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        productTry('Zanari');
+    loadCart();
+
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const product = btn.dataset.product;
+        const price = parseFloat(btn.dataset.price);
+        const type = btn.dataset.type || 'supplement';
+        addToCart(product, price, type);
+      });
+    });
+
+    document.querySelectorAll('.quick-info').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const infoType = btn.dataset.info;
+        showProductInfo(infoType);
+      });
+    });
+
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const page = btn.dataset.page;
+        if(page === 'products') switchPage('products');
+        else if(page === 'checkout') switchPage('checkout');
+      });
+    });
+
+    const completeBtn = document.getElementById('completeOrderBtn');
+    if(completeBtn) {
+      completeBtn.addEventListener('click', () => {
+        processTransaction();
+        renderCartUI();
       });
     }
-    if (zanariInfoBtn) {
-      zanariInfoBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        showProductInfo('zanari');
-      });
-    }
-    if (burnTryBtn) {
-      burnTryBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        productTry('BurnSlim');
-      });
-    }
-    if (burnInfoBtn) {
-      burnInfoBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        showProductInfo('burnslim');
-      });
-    }
-    
-    const resetBtn = document.getElementById('resetStatsBtn');
-    if(resetBtn) resetBtn.addEventListener('click', () => resetAllStats());
-    
-    const summaryBtn = document.getElementById('showFullInfoBtn');
-    if(summaryBtn) summaryBtn.addEventListener('click', () => showFullSummary());
-    
-    // extra: initial compatibility message
-    setTimeout(() => {
-      addInteraction('System', 'Ready', 'Interactive product showcase loaded');
-    }, 100);
+
+    renderCartUI();
   });
 </script>
 </body>
